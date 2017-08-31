@@ -5,7 +5,7 @@ class VertexTests(unittest.TestCase):
     def setUp(self):
         self.vertex = Vertex("sample")
 
-    def test_test_setUp(self):
+    def test_unittest(self):
         self.assertTrue(True)
         self.assertFalse(False)
 
