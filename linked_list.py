@@ -5,6 +5,16 @@ class LinkedList:
         else:
             self.head = head
 
+    def add_node(self, newNode):
+        if self.head == None:
+            self.head = newNode
+        else:
+            current = self.head
+            while current.next != None:
+                current = current.next
+            last = current
+            last.next = newNode
+
     def length(self):
         if self.head == None:
             return 0
@@ -18,20 +28,24 @@ class LinkedList:
             # current = last node here
             return count
 
+    def reverse(self):
+        current = self.head
+        before = None
+        after = None
 
+        if (self.head is None) | (self.head.next is None):
+            return True
+        else:
+            while (current is not None):
+                after = current.next
+                current.next = before
+                before = current
+                current = after
+            self.head = before
+            return LinkedList(self.head)
 
 class Node:
     def __init__(self, name, value):
         self.name = name
         self.value = value
         self.next = None
-
-    def add_node(self, newNode):
-        if self == None:
-            self = newNode
-        else:
-            current = self
-            while current.next != None:
-                current = current.next
-            last = current
-            last.next = newNode
