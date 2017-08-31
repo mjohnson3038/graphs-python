@@ -31,6 +31,29 @@ class QueueTest(unittest.TestCase):
 
         self.assertEqual(prePeek, postPeek)
 
+    def test_pop(self):
+        self.setUp()
+        self.queue.push("I'm in the queue")
+        self.queue.push("Butterfly")
+
+        prePopCount = len(self.queue.elements)
+        firstElement = self.queue.elements[0]
+        self.assertEqual(firstElement, self.queue.pop())
+
+        postPopCount = len(self.queue.elements)
+        self.assertEqual(prePopCount - 1, postPopCount)
+
+    def test_pop_on_empty_queue(self):
+        self.setUp()
+
+        prePopCount = len(self.queue.elements)
+
+        self.assertIsNone(self.queue.pop())
+
+        postPopCount = len(self.queue.elements)
+        self.assertEqual(prePopCount, postPopCount)
+
+
 def main():
   unittest.main()
 

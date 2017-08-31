@@ -12,3 +12,11 @@ class Queue:
             return None
         else:
             return self.elements[0]
+
+    def pop(self):
+        if len(self.elements) == 0:
+            return None
+        else:
+            ele = self.elements[0]
+            del self.elements[0]
+            return ele
