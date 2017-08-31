@@ -6,3 +6,9 @@ class Queue:
     def push(self, ele):
         self.elements.append(ele)
         return True
+
+    def peek(self):
+        if len(self.elements) == 0:
+            return None
+        else:
+            return self.elements[0]
