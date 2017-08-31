@@ -5,12 +5,14 @@ class Vertex:
         self.neighbors = []
 
     def add_neighbor(self, vertex):
-        self.neighbors.append(vertex)
+        if not isinstance(vertex, Vertex):
+            print "All neighbors must be vertex objects, try again."
+            return False
+        else:
+            self.neighbors.append(vertex)
+            return True
 
 v1 = Vertex("one")
 v2 = Vertex(2)
 
 v1.add_neighbor(v2)
-
-print v1.name
-print v1.neighbors[0].name
