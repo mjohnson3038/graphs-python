@@ -9,15 +9,27 @@ class QueueTest(unittest.TestCase):
         self.assertTrue(True)
         self.assertFalse(False)
 
-    def test_push(self)
+    def test_push(self):
         self.setUp()
-        preCount = len(self.queue)
+        preCount = len(self.queue.elements)
         ele = "new element"
 
         self.assertTrue(self.queue.push(ele))
 
-        postCount = len(self.queue)
-        self.assertEqual(self.queue[postCount - 1], ele)
+        postCount = len(self.queue.elements)
+        self.assertEqual(self.queue.elements[postCount - 1], ele)
+
+    def test_peek(self):
+        self.setUp()
+
+        self.assertIsNone(self.queue.peek())
+
+        self.queue.push("Im something")
+        prePeek = len(self.queue.elements)
+        self.assertEqual("Im something", self.queue.peek())
+        postPeek = len(self.queue.elements)
+
+        self.assertEqual(prePeek, postPeek)
 
 def main():
   unittest.main()
