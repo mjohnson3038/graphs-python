@@ -16,6 +16,7 @@ class VertexTests(unittest.TestCase):
         self.assertTrue(self.vertex.add_neighbor(validVertex))
         postNeighborCount = len(self.vertex.neighbors)
         self.assertEqual(preNeighborCount + 1, postNeighborCount)
+        self.assertIn(validVertex, self.vertex.neighbors)
 
     def test_add_neighbor_thats_int(self):
         self.setUp()
@@ -24,6 +25,7 @@ class VertexTests(unittest.TestCase):
         self.assertFalse(self.vertex.add_neighbor(notValidVertex))
         postNeighborCount = self.vertex.neighbors.count
         self.assertEqual(preNeighborCount, postNeighborCount)
+        self.assertNotIn(notValidVertex, self.vertex.neighbors)
 
     def test_add_neighbor_thats_string(self):
         self.setUp()
@@ -32,6 +34,7 @@ class VertexTests(unittest.TestCase):
         self.assertFalse(self.vertex.add_neighbor(notValidVertex))
         postNeighborCount = self.vertex.neighbors.count
         self.assertEqual(preNeighborCount, postNeighborCount)
+        self.assertNotIn(notValidVertex, self.vertex.neighbors)
 
 def main():
   unittest.main()
