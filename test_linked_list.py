@@ -73,11 +73,6 @@ class NodeTest(unittest.TestCase):
       def setUp(self):
           self.node = Node(0, 0)
 
-
-
-
-
-
 def main():
   unittest.main()
 

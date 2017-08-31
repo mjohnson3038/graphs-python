@@ -25,20 +25,12 @@ class Graph:
             start.add_neighbor(end)
             return True
 
-
-v1 = Vertex(1)
-v2 = Vertex(2)
-
-g = Graph()
-g.add_vertex(v1)
-g.add_vertex(v2)
-
-g.add_edge(v1, v2)
-
-# print v1.neighbors
-# print type(v2)
-# print type(g)
-# print isinstance(v1, Vertex)
-
-q = Queue()
-print q
+    def shortest_path(self, start, end):
+        if (not isinstance(start, Vertex)) | (not isinstance(end, Vertex)):
+            print "Start and end points must be valid indicies"
+            return False
+        elif (start not in self.verticies) | (end not in self.verticies):
+            print "Beginning and ending verticies must both be associated with the respected graph"
+            return False
+        else:
+            return True

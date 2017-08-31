@@ -81,6 +81,27 @@ class GraphTests(unittest.TestCase):
         self.assertNotIsInstance(end_vertex, Vertex)
         self.assertFalse(self.graph.add_edge(self.vertex, end_vertex))
 
+    def test_distance_between_not_valid_verticies(self):
+        self.setUp()
+        not_valid_one = "Hello!"
+        not_valid_two = "Bye"
+
+        self.assertFalse(self.graph.shortest_path(not_valid_one, not_valid_two))
+        self.assertFalse(self.graph.shortest_path(self.vertex, not_valid_two))
+        self.assertFalse(self.graph.shortest_path(not_valid_one, self.vertex))
+
+    def test_shortest_path_both_verticies_must_be_on_graph(self):
+        self.setUp()
+        vertexNotOnGraph = Vertex("new")
+
+        self.assertFalse(self.graph.shortest_path(vertexNotOnGraph, self.vertex))
+        self.assertFalse(self.graph.shortest_path(vertexNotOnGraph, vertexNotOnGraph))
+        self.assertFalse(self.graph.shortest_path(self.vertex, vertexNotOnGraph))
+
+    # def
+
+
+
 
 def main():
   unittest.main()
