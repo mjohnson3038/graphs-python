@@ -38,4 +38,7 @@ g.add_edge(v1, v2)
 # print v1.neighbors
 # print type(v2)
 # print type(g)
-print isinstance(v1, Vertex)
+# print isinstance(v1, Vertex)
+
+q = Queue()
+print q
