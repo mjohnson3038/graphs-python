@@ -1,4 +1,5 @@
 from vertex import Vertex
+from queue import Queue
 
 class Graph:
 
@@ -25,12 +26,16 @@ class Graph:
             start.add_neighbor(end)
             return True
 
-    def shortest_path(self, start, end):
-        if (not isinstance(start, Vertex)) | (not isinstance(end, Vertex)):
-            print "Start and end points must be valid indicies"
-            return False
-        elif (start not in self.verticies) | (end not in self.verticies):
-            print "Beginning and ending verticies must both be associated with the respected graph"
-            return False
-        else:
-            return True
+# # WIP - change this to return the actual path using the linked list class constructed and a distcionary holding previous values.
+#     def shortest_path(self, start, end):
+#         if (not isinstance(start, Vertex)) | (not isinstance(end, Vertex)):
+#             print "Start and end points must be valid indicies"
+#             return False
+#         elif (start not in self.verticies) | (end not in self.verticies):
+#             print "Beginning and ending verticies must both be associated with the respected graph"
+#             return False
+#         elif (start == end):
+#             # to return a linked list of just the single element
+#             return True
+#         else:
+            # logic for the path
