@@ -57,7 +57,29 @@ class GraphTests(unittest.TestCase):
         self.assertNotIn(end_vertex, self.vertex.neighbors)
         self.assertNotIn(self.vertex, end_vertex.neighbors)
 
+    def test_add_edge_but_start_vertex_not_vertext_object(self):
+        start_vertex = "HeYYYY!!"
 
+        self.assertNotIsInstance(start_vertex, Vertex)
+
+        self.assertFalse(self.graph.add_edge(start_vertex, self.vertex))
+        self.assertNotIn(start_vertex, self.vertex.neighbors)
+
+    def test_add_edge_but_end_vertex_not_vertext_object(self):
+        end_vertex = "HeYYYY!!"
+
+        self.assertNotIsInstance(end_vertex, Vertex)
+
+        self.assertFalse(self.graph.add_edge(self.vertex, end_vertex))
+        self.assertNotIn(end_vertex, self.vertex.neighbors)
+
+    def test_add_edge_but_neither_start_nor_end_vertex_are_vertext_object(self):
+        start_vertex = "foo"
+        end_vertex = "bar"
+
+        self.assertNotIsInstance(start_vertex, Vertex)
+        self.assertNotIsInstance(end_vertex, Vertex)
+        self.assertFalse(self.graph.add_edge(self.vertex, end_vertex))
 
 
 def main():
