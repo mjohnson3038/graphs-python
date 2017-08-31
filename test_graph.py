@@ -14,13 +14,28 @@ class GraphTests(unittest.TestCase):
         self.assertFalse(False)
 
     def test_add_vertex_valid(self):
-        validVertex = Vertex("valid")
         pre_vertex_count = len(self.graph.verticies)
+
+        validVertex = Vertex("valid")
+        self.assertIsInstance(validVertex, Vertex)
+
         self.assertTrue(self.graph.add_vertex(validVertex))
+
         post_vertex_count = len(self.graph.verticies)
         self.assertEqual(pre_vertex_count + 1, post_vertex_count)
         self.assertIn(validVertex, self.graph.verticies)
 
+    def test_add_vertext_not_valid(self):
+        pre_vertex_count = len(self.graph.verticies)
+
+        notValidVertex = "hello, I'm not valid"
+        self.assertNotIsInstance(notValidVertex, Vertex)
+
+        self.assertFalse(self.graph.add_vertex(notValidVertex))
+
+        post_vertex_count = len(self.graph.verticies)
+        self.assertEqual(pre_vertex_count, post_vertex_count)
+        self.assertNotIn(notValidVertex, self.graph.verticies)
 
 
 
