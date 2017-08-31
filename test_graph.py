@@ -37,6 +37,26 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(pre_vertex_count, post_vertex_count)
         self.assertNotIn(notValidVertex, self.graph.verticies)
 
+    def test_add_edge_between_valid_verticies(self):
+        valid_vertex = Vertex("end")
+        self.graph.add_vertex(valid_vertex)
+
+        self.assertTrue(self.graph.add_edge(self.vertex, valid_vertex))
+        self.assertIn(valid_vertex, self.vertex.neighbors)
+        self.assertNotIn(self.vertex, valid_vertex.neighbors)
+
+    def test_add_edge_but_start_vertex_not_in_graph(self):
+        start_vertex = Vertex("start")
+        self.assertFalse(self.graph.add_edge(start_vertex, self.vertex))
+        self.assertNotIn(start_vertex, self.vertex.neighbors)
+        self.assertNotIn(self.vertex, start_vertex.neighbors)
+
+    def test_add_edge_but_end_vertex_not_in_graph(self):
+        end_vertex = Vertex("start")
+        self.assertFalse(self.graph.add_edge(self.vertex, end_vertex))
+        self.assertNotIn(end_vertex, self.vertex.neighbors)
+        self.assertNotIn(self.vertex, end_vertex.neighbors)
+
 
 
 
